@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+  <h1>5 PRIMITIVE TYPES IN JAVASCRIPT</h1>
+  <ul>
+    <li><b>Boolean</b> - true or false</li>
+    <li><b>Number</b> - Any integer or floating-point numeric value</li>
+    <li><b>String</b> - A character or sequence of characters delimited by either single or double quotes</li>
+    <li><b>Null</b> - A primitive type that has only one value, null.</li>
+    <li><b>Undefined</b> - A primitive type that has only one value, undefined. Undefined is the value assigned to a variable that is not initialized.</li>
+  </ul>
+  <script>
+    // Boolean
+
+    var found = true;
+
+    // Numbers
+
+    var count = 25;
+    var cost = 1.51;
+
+    // Strings
+
+    var name = "Dave";
+    var selection = "A";
+
+    // Null
+
+    var object = null;
+
+    // Undefined
+
+    var flag = undefined;
+    var ref;
+      console.log(ref);  // logs undefined in the console
+
+    //
+
+    var color1 = "red";
+    var color2 = color1;
+
+    console.log(color1);
+      // logs "red"
+
+    console.log(color2);
+      // logs "red"
+
+    color1 = "blue";
+
+    console.log(color1);
+      // logs "blue"
+
+    console.log(color2);
+      // logs "red"
+
+        // WHY?
+          // Each variable containing a primitive value uses its own storage space.
+          // Changes to one variable are not reflected on the other.
+
+  </script>
+</body>
+</html>
