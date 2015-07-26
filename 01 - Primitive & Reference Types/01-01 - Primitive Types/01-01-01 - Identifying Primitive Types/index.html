@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+  <h1>IDENTIFYING PRIMITIVE TYPES</h1>
+  <p><i>typeof</i> operator - the best way to identify primitive types</p>
+<script>
+  console.log(typeof "Dave");
+    // logs "string"
+
+  console.log(typeof 10);
+    // logs "number"
+
+  console.log(typeof 5.1);
+    // logs "number"
+
+  console.log(typeof true);
+    // logs "boolean"
+
+  console.log(typeof undefined);
+    // logs "undefined"
+
+  // null is the exception
+  console.log(typeof null);
+    // logs "object"
+      // WHY?
+        // This is an error with JavaScript.
+          // null is an empty object pointer
+
+  // The best way to determine if a value is null is to compare it against null directly...
+  var value = 10;
+    console.log(value === null);
+      // logs false
+
+  //
+
+  // Comparing Without Coercion
+
+    // === does comparison without coercing the variable to another type
+
+  console.log("5" == 5);
+    // logs true
+
+  console.log("5" === 5);
+    // logs false
+
+  console.log(undefined == null);
+    // logs true
+
+  console.log(undefined === null);
+    // logs false
+    // Lesson Learned: When trying to identify null, use === so that you can correctly identify the type.
+
+</script>
+</body>
+</html>
