@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+  <h1>PRIMITIVE METHODS</h1>
+  <h2>QTY#3 Primitive Types have Methods</h2>
+  <ul>
+    <li>Strings</li>
+    <li>Numbers</li>
+    <li>Booleans</li>
+  </ul>
+  <h3>QTY#2 Primitive Types DO NOT have Methods</h3>
+  <ul>
+    <li>null</li>
+    <li>undefined</li>
+  </ul>
+  <script>
+
+    // String Methods
+
+    var name = "Dave";
+    var lowercaseName = name.toLowerCase(); // convert to lowercase
+    var firstLetter = name.charAt(0);       // get first character
+    var middleOfName = name.substring(2,4); // get characters 2-3
+
+
+    // Number Methods
+
+    var count = 10;
+    var fixedCount = count.toFixed(2); // convert to "10.00"
+    var hexCount = count.toString(16); // convert to "a"
+
+    // Boolean Methods
+
+    var flag = true;
+    var stringFlag = flag.toString();  // convert to "true"
+
+  </script>
+</body>
+</html>
