@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+  <h1>PRIMITIVE & REFERENCE TYPES</h1>
+  <h2>Reference Types</h2>
+  <h3>Dereferencing Objects</h3>
+  <p>Best Practice: <i>dereference</i> objects that you no longer need so that the garbage collector can free up that memory</p>
+  <p>The best way to do this is to set the object variable to <i>null</i>.</p>
+
+  <script>
+
+    var object1 = new Object();
+      // do something
+
+    object1 = null;  //dereference
+
+    // object1 is created and used before being set to null.
+
+  </script>
+</body>
+</html>
