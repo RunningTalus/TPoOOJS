@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>PRIMITIVE & REFERENCE TYPES</h1>
+<h2>Reference Types</h2>
+<h3>Adding or Removing Properties</h3>
+<p>With objects you can add and remove properties at any time.</p>
+
+
+  <script>
+
+    var object1 = new Object();
+    var object2 = object1;
+
+    object1.myCustomProperty = "Awesome!";
+    console.log(object2.myCustomProperty);  // logs "Awesome!"
+
+
+  </script>
+</body>
+</html>
