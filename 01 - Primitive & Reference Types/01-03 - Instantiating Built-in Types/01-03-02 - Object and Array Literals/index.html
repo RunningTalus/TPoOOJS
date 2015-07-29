@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>PRIMITIVE & REFERENCE TYPES</h1>
+<h2>Instantiating Built-in Types</h2>
+<h3>Object and Array Literal Forms</h3>
+
+  <script>
+
+    // OBJECT LITERAL FORMS
+
+    var book = {
+      title: "The Origin of Species",
+      year: 1859
+    };
+
+    // OR use string literals for property names
+      // Useful when a property name must have spaces or other special characters.
+
+    var book = {
+      "title": "The Origin of Species",
+      "year": 1859
+    };
+
+    // OR
+
+    var book = new Object();
+    book.title = "The Origin of Species";
+    book.year = 1859;
+
+    //
+
+
+    // ARRAY LITERAL FORMS
+
+    var colors = ["red", "white", "blue"];
+    console.log(colors[0]);
+      // logs "red"
+
+    // OR
+
+    var colors = new Array("red", "white", "blue");
+    console.log(colors[0]);
+      // logs "red"
+
+
+  </script>
+</body>
+</html>
