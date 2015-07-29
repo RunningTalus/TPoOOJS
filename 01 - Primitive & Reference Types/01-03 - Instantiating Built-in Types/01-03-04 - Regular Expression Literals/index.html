@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>PRIMITIVE & REFERENCE TYPES</h1>
+<h2>Instantiating Built-in Types</h2>
+<h3>Regular Expression Literals</h3>
+
+  <script>
+
+    var numbers = /\d+/g;
+      // Regular Expression Literal looks similar to PERL, pattern contained between two slashes /xxx/ with any
+      // additional options added after the second slash.
+      // Easier to use, you do not need to escape characters within strings.
+
+    // IS THE SAME AS...
+
+    var numbers = new RegExp("\\d+", "g");
+      // RegExp with Constructor, more difficult to use, pattern is passed in as a string, backslashes MUST be escaped.
+      // Best use case for using a RegExp constructor, is when the regular expression is being constructed dynamically
+      // from two or more strings.
+
+
+  </script>
+</body>
+</html>
