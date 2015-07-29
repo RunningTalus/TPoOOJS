@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>PRIMITIVE & REFERENCE TYPES</h1>
+<h2>Instantiating Built-in Types</h2>
+<h3>Function Literals</h3>
+<p>Best Practice: Define functions in their literal form AND avoid using constructor form.</p>
+<p>WHY?</p>
+  <p>It is difficult to debug functions that are created in the constructor form.</p>
+
+  <script>
+
+    function reflect(value){
+      return value;
+    }
+
+    // Is the same as...
+
+    var reflect = new Function("value", "return value;");
+
+  </script>
+</body>
+</html>
