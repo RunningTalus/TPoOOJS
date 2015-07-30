@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>PRIMITIVE & REFERENCE TYPES</h1>
+<h2>Property Access</h2>
+<p> Best use case for bracket notation: Using special characters in property names.</p>
+
+  <script>
+
+    // dot notation
+
+    var array = [];
+    array.push(12345);
+
+    // OR
+
+    // bracket notation
+
+    var array = [];
+    array["push"](12345); // accessing array methods by using bracket notation with a string.
+
+    // OR
+
+    // use bracket notation to use a variable instead of a string literal to specify the property to access.
+
+
+    var array = [];
+    var method = "push";
+    array[method](12345);
+
+
+  </script>
+</body>
+</html>
