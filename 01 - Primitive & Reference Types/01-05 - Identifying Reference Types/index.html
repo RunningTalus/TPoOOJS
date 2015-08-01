@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+  <h1>PRIMITIVE & REFERENCE TYPES</h1>
+  <h2>Identifying Reference Types</h2>
+
+  <h3><i>typeof</i></h3>
+
+  <p><i>typeof</i> operator use on functions will return or log "function".</p>
+
+  <p><i>typeof</i> on all other reference types will return or log "object"</p>
+
+
+  <script>
+
+    function reflect(value) {
+      return value;
+    }
+
+    console.log(typeof reflect);
+      // logs "function"
+
+
+  </script>
+
+  <h4><i>instanceof</i></h4>
+
+  <p><i>instanceof</i> operator takes QTY#2 parameters</p>
+    <ol>
+      <li>Object</li>
+      <li>Constructor</li>
+    </ol>
+  <p>When the value is an instance of the type that the constructor specifies, <i>instanceof</i> will return true, otherwise it returns false.</p>
+
+  <p>The <i>instanceof</i> operator can identify inherited types.</p>
+    <p>WHY?</p>
+      <p>Every object is an instance of <i>Object</i> because EVERY reference type inherits from <i>Object</i>.</p>
+  <script>
+
+    var items = [];
+    var object = {};
+
+    function reflect(value) {
+      return value;
+    }
+
+    console.log(items instanceof Array);       // logs true
+    console.log(object instanceof Object);     // logs true
+    console.log(reflect instanceof Function);  // logs true
+
+  </script>
+
+  <p>Each reference type is correctly identified as an instance of <i>Object</i>, from which all reference types inherit.</p>
+
+  <script>
+    var items = [];
+    var object = {};
+
+    function reflect(value) {
+      return value;
+    }
+
+    console.log(items instanceof Array);       // logs true
+    console.log(items instanceof Object);      // logs true
+    console.log(object instanceof Object);     // logs true
+    console.log(object instanceof Array);      // logs false
+    console.log(reflect instanceof Function);  // logs true
+    console.log(reflect instanceof Object);    // logs true
+  </script>
+
+  <p>NOTE: object <i>instanceof</i> Array logs FALSE.</p>
+  <p>Arrays are objects, but objects are NOT Arrays</p>
+
+</body>
+</html>
