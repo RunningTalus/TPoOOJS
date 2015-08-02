@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+  <body>
+    <h1>PRIMITIVE & REFERENCE TYPES</h1>
+    <h2>Identifying Arrays</h2>
+    <p><i>instanceof</i> operator can identify arrays.</p>
+    <p>This becomes problematic in the browser, as each webpage has its own global context- and thus its own version of
+       built-in types: (<i>Object, Array...</i>)</p>
+    <h3><i>Array.isArray();</i></h3>
+    <p>In ECMAScript 5 compliant environments use <i>Array.isArray();</i></p>
+    <p><i>Array.isArray();</i> will return <i>true</i> when it receives a value that is a native array from ANY context.</p>
+    <h4>Compatibility</h4>
+    <p>Supported in node.js</p>
+    <p>NOT supported in IE8 and earlier.</p>
+
+    <script>
+      var items = [];
+      console.log(Array.isArray(items));  // logs true
+    </script>
+
+
+  </body>
+</html>
