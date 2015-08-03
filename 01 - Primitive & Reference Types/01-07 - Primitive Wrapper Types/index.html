@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>PRIMITIVE & REFERENCE TYPES</h1>
+<h2>Primitive Wrapper Types</h2>
+<h3>There are QTY#3 Primitive Wrapper Types</h3>
+<ol>
+  <li>String</li>
+  <li>Number</li>
+  <li>Boolean</li>
+</ol>
+<p>Primitive Wrapper Types - are reference types that are automatically created behind the scenes whenever strings,
+numbers, or booleans, are read</p>
+<script>
+  var name = "Dave";
+  var firstChar = name.charAt(0);
+  console.log(firstChar);          // logs "D"
+
+  // What happens behind the scenes with the JavaScript Engine.
+
+  var name = "Dave";
+    var temp = new String(name);
+    var firstChar = temp.charAt(0);
+    temp = null;                    // temp is dereferenced.
+  console.log(firstChar);         // logs "D"
+</script>
+
+
+//
+
+<p>Primitive Wrapper Types - properties seem to disappear because the object on which the property was assigned is
+   DESTROYED IMMEDIATELY AFTER USE.</p>
+
+<script>
+  var name = "Dave";
+  name.last = "May";
+
+  console.log(name.last);  // logs undefined
+</script>
+
+// Here's what the JavaScript Engine is doing.
+
+<script>
+var name = "Dave";
+  var temp = new String(name);
+  temp.last = "May";
+  temp = null;                   // temporary object destroyed
+
+  var temp = new String(name);
+  console.log(temp.last);        // logs undefined
+  temp = null
+</script>
+
+<p>Although reference values are created automatically for primitive values, when <i>instanceof</i> checks for these
+   types of values the result is false.</p>
+
+<script>
+  var name = "Dave"
+  var count = 100;
+  var found = false;
+
+  console.log(name instanceof String);   // logs false
+  console.log(count instanceof Number);  // logs false
+  console.log(found instanceof Boolean); // logs false
+</script>
+
+<p>WHY?</p>
+<p>The <i>instanceof</i> operator returns <i>false</i> because a temporary object is created ONLY when a value is read.</p>
+<p><i>instanceof</i> does NOT actually read anything, thus NO temporary objects are created.</p>
+<p>You can create primitive wrapper types manually, but there are side effects</p>
+<p>Using a constructor to create primitive wrapper types CREATES OBJECTS.</p>
+<script>
+
+  var name = new String("Dave");
+  var count = new Number(100);
+  var found = new Boolean(false);
+
+  console.log(typeof name);  // logs "object"
+  console.log(typeof count); // logs "object"
+  console.log(typeof found); // logs "object"
+
+</script>
+
+
+<p>Rule of Thumb: Using Primitive Wrapper objects instead of primitives only leads to errors</p>
+
+<script>
+  var whiskey = new Boolean(false);
+
+  if (whiskey) {
+    console.log("Whiskey");  // logs "Whiskey"
+  }
+
+  console.log(whiskey);  // logs Boolean {[[PrimitiveValue]]: false}
+
+  // The Boolean object is false
+  // console.log("Whiskey"); still executes, because an object is always considered true inside a conditional statement.
+  // It doesn't matter that the object represents false, it's an object, SO it evaluates to true.
+</script>
+
+</body>
+</html>
