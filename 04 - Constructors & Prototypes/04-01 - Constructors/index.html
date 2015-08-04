@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>CONSTRUCTORS & PROTOTYPES</h1>
+<h2>Constructors</h2>
+<p>constructor - a function that is used with <i>new</i> to create an object.</p>
+<p>constructor names - start with a capital letter to distiguish them from other functions.</p>
+
+<script>
+  function Person(){
+    // intentionally empty
+  }
+</script>
+
+<p>Once the constructor is defined, you can start creating instances (e.g the two <i>Person</i> objects below.</p>
+
+<script>
+  var person1 = new Person;
+  var person2 = new Person;
+</script>
+
+<p>The <i>Person</i> constructor does NOT return anything, BUT both <i>person1</i> and <i>person2</i> are considered instances of the new <i>Person</i> type.</p>
+<p>NOTE: The <i>new</i> operator AUTOMATICALLY creates an object of the given type AND returns it.</p>
+<p>USE the <i>instanceof</i> operator to deduce an object's type.</p>
+
+<script>
+  console.log(person1 instanceof Person);  // logs true
+  console.log(person2 instanceof Person);  // logs true
+</script>
+
+//
+
+<p>Generic Objects - created via an object literal or the <i>Object constuctor</i>.</p>
+<p><i>Constructor</i> is set to <i>Object</i>.</p>
+
+<p>Objects created with custom constructors, <i>constructor</i> points back to the constructor function.</p>
+
+<script>
+  console.log(person1.constructor === Person);  // logs true
+  console.log(person2.constructor === Person);  // logs true
+</script>
+
+//
+
+<p>Populate the <i>Person</i> constructor with properties and values.</p>
+<script>
+  function Person(name) {
+    this.name = name;
+    this.sayName = function(){
+      console.log(this.name);
+    };
+  }
+
+  var person1 = new Person("Wilson");
+  var person2 = new Person("Monster");
+
+  console.log(person1.name);  // logs "Wilson"
+  console.log(person2.name);  // logs "Monster"
+
+  person1.sayName();  // logs "Wilson"
+  person2.sayName();  // logs "Monster"
+</script>
+
+//
+
+<p>NOTE: You can explicitly call <i>return</i> inside of a constructor.
+If the returned value is an object, it will be returned instead of the newly created object instance.
+   If the returned value is a primitive, the newly created object is used and the returned value is ignored.
+</p>
+
+<p>Use <i>Object.defineProperty();</i> inside of a constructor to initialize the instance of a type in a consistent way.</p>
+<p>The <i>name</i> property is an accessor property that uses the <i>name</i> parameter for storing the actual name.</p>
+<script>
+  function Person(name) {
+
+    Object.defineProperty(this, "name", {
+      get: function() {
+        return name;
+      },
+      set: function(newName) {
+        name = newName;
+      },
+      enumerable: true,
+      configurable: true
+    });
+
+    this.sayName = function() {
+      console.log(this.name);
+    };
+  }
+
+</script>
+
+//
+
+<p>What happens if you forget to use constructors without <i>new</i>?</p>
+<p>You risk changing the global object instead of the newly created object.</p>
+
+<script>
+  var person1 = Person("Ricky");  // NOTE: missing the use of "new"
+
+  console.log(person1 instanceof Person);  // logs false
+  console.log(typeof person1);  // logs "undefined"
+  console.log(name);            // logs "Ricky"
+</script>
+
+<p>NOTE: Strict Mode does NOT assign <i>this</i> to the global object. Instead <i>this</i> remains <i>undefined</i>, and an error occurs whenever you attempt to create a property on <i>undefined</i>.</p>
+
+</body>
+</html>
