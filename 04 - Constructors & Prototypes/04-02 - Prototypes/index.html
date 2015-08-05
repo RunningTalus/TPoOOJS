@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>CONSTRUCTORS & PROTOTYPES</h1>
+<h2>Prototypes</h2>
+<h3><i>prototype</i> - recipe for an object.</h3>
+<p>Prototype is shared on all object instances.</p>
+
+<script>
+  var book = {
+    title: "Touring Colorado Hot Springs"
+  };
+
+  console.log("title" in book);                                    // logs true
+
+  console.log(book.hasOwnProperty("title"));                       // logs true
+
+  console.log("hasOwnProperty" in book);                           // logs true
+
+  console.log(book.hasOwnProperty("hasOwnProperty"));              // logs false
+
+  console.log(Object.prototype.hasOwnProperty("hasOwnProperty"));  // logs true
+
+</script>
+
+<h4>Identifying a Prototype Property</h4>
+<p>If the property is an object, BUT <i>hasOwnProperty()</i> returns <i>false</i>, THEN the property is on the prototype.</p>
+
+<script>
+  function hasPrototypeProperty(object, name) {
+    return name in object && !object.hasOwnProperty(name);
+  }
+
+  console.log(hasPrototypeProperty(book, "title"));          // logs false
+
+  console.log(hasPrototypeProperty(book, "hasOwnProperty")); // logs true
+</script>
+
+
+</body>
+</html>
