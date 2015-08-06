@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>CONSTRUCTORS & PROTOTYPES</h1>
+<h2>The [[Prototype]] Property</h2>
+
+<p>You can read the value of the <i>[[Prototype]]</i> property by using the <i>Object.getPrototypeOf()</i> method on an object.</p>
+
+<p>NOTE: For any generic object like this, <i>[[Prototype]]</i> is always a reference to <i>Object.prototype</i>.</p>
+
+<script>
+  var object = {};
+  var prototype = Object.getPrototypeOf(object);
+
+  console.log(prototype === Object.prototype);   // logs true
+</script>
+
+
+
+</body>
+</html>
