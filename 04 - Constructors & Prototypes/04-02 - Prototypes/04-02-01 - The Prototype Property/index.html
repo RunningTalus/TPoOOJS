@@ -18,8 +18,36 @@
 
   console.log(prototype === Object.prototype);   // logs true
 </script>
+//
+<p>NOTE: <i>__proto__</i> Is a property on all objects that allows you to both read from and write to the <i>[[Prototype]]</i> property. This on the list for inclusion in ECMAScript6</p>
 
+<h3>Use <i>isPrototypeOf()</i> method on objects to test if one object is a prototype for another.</h3>
 
+<script>
+  var object = {};
+  console.log(Object.prototype.isPrototypeOf(object));  //logs true
+</script>
+//
+
+<script>
+  var object = {};
+  console.log(object.toString());  // logs "[object Object]"
+
+  object.toString = function(){
+    return "[object Custom]";
+  };
+
+  console.log(object.toString());  // logs "[object Custom]"
+
+  delete object.toString;          // delete own property
+
+  console.log(object.toString());  // logs "[object Object]"
+
+  delete object.toString;          // HAS NO EFFECT, delete only works on own properties
+  console.log(object.toString());  // logs "[object Object]"
+</script>
+
+<p>You CANNOT assign a value to a prototype property from an instance.</p>
 
 </body>
 </html>
