@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>CONSTRUCTORS & PROTOTYPES</h1>
+<h2>Using Prototypes with Constructors</h2>
+<p>Prototypes are ideal for defining methods once for all objects of a given type.</p>
+<p>More efficient to put methods on the prototype, and use <i>this</i> to access the current instance.</p>
+
+<script>
+  function Person(name) {
+    this.name = name;
+  }
+
+  Person.prototype.sayName = function(){
+    console.log(this.name);
+  };
+
+  var person1 = new Person("Lionel");
+  var person2 = new Person("Richie");
+
+  console.log(person1.name);  // logs "Lionel"
+  console.log(person2.name);  // logs "Richie"
+
+  person1.sayName();  // outputs "Lionel"
+  person2.sayName();  // outputs "Richie"
+</script>
+
+//
+
+
+
+</body>
+</html>
