@@ -55,8 +55,31 @@
 <p>Why do we get the same result for person1 and person2 favorites?</p>
 <p>The <i>favorites</i> property is defined on the prototype</p>
 <p>person1.favorites and person.2.favorites point to the same array</p>
+
 //
 
+<p>Replacing the prototype with an object literal</p>
+<script>
+
+  function Person(name) {
+    this.name = name;
+  }
+
+  Person.prototype = {
+    sayName: function(){
+      console.log(this.name);
+    },
+    toString: function() {
+      return "[Person " + this.name + "]"
+    }
+  };
+
+  // sayName() and toString() methods are defined on the prototype
+  // Eliminates the need to type Person.prototype multiple times
+
+  //
+
+</script>
 
 
 </body>
