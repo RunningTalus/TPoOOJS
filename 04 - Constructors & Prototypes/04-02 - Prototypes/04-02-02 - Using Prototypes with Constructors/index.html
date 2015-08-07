@@ -31,6 +31,32 @@
 
 //
 
+<script>
+  function Person(name) {
+    this.name = name;
+  }
+
+  Person.prototype.sayName = function() {
+    console.log(this.name);
+  };
+
+  Person.prototype.favorites = [];
+
+  var person1 = new Person("Donald");
+  var person2 = new Person("Jeb");
+
+  person1.favorites.push("steak");
+  person2.favorites.push("wings");
+
+  console.log(person1.favorites); // logs ["steak", "wings"]
+  console.log(person2.favorites); // logs ["steak", "wings"]
+</script>
+
+<p>Why do we get the same result for person1 and person2 favorites?</p>
+<p>The <i>favorites</i> property is defined on the prototype</p>
+<p>person1.favorites and person.2.favorites point to the same array</p>
+//
+
 
 
 </body>
