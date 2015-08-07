@@ -10,7 +10,7 @@
 <p>Prototypes are ideal for defining methods once for all objects of a given type.</p>
 <p>More efficient to put methods on the prototype, and use <i>this</i> to access the current instance.</p>
 
-<script>
+<!--<script>
   function Person(name) {
     this.name = name;
   }
@@ -27,11 +27,11 @@
 
   person1.sayName();  // outputs "Lionel"
   person2.sayName();  // outputs "Richie"
-</script>
+</script>-->
 
 //
 
-<script>
+<!--<script>
   function Person(name) {
     this.name = name;
   }
@@ -50,7 +50,7 @@
 
   console.log(person1.favorites); // logs ["steak", "wings"]
   console.log(person2.favorites); // logs ["steak", "wings"]
-</script>
+</script>-->
 
 <p>Why do we get the same result for person1 and person2 favorites?</p>
 <p>The <i>favorites</i> property is defined on the prototype</p>
@@ -59,7 +59,7 @@
 //
 
 <p>Replacing the prototype with an object literal</p>
-<script>
+<!--<script>
 
   function Person(name) {
     this.name = name;
@@ -77,12 +77,12 @@
   // sayName() and toString() methods are defined on the prototype
   // Eliminates the need to type Person.prototype multiple times
 
-</script>
+</script>-->
 
 //
 
 <p>Side Effects: Using object literal notation to overwrite the prototype changed the <i>constructor</i> property so that it now points to <i>Object</i> instead of <i>Person</i></p>
-<script>
+<!--<script>
 
   var person1 = new Person("Nicholas");
 
@@ -90,13 +90,43 @@
   console.log(person1.constructor === Person); // logs false
   console.log(person1.constructor === Object); // logs true
 
-</script>
+</script>-->
 
 //
 
+<p>NOTE: The <i>constructor</i> property is specifically assigned on the prototype.</p>
+<p>Best Practice: Make constructor the first property on the prototype so you do not forget to include it.</p>
 
+<script>
 
+  function Person(name) {
+    this.name = name;
+  }
 
+  Person.prototype = {
+
+    constructor: Person,
+
+    sayName: function(){
+      console.log(this.name);
+    },
+
+    toString: function() {
+      return "[Person " + this.name + "]"
+    }
+  };
+
+  var person1 = new Person("Barbara");
+  var person2 = new Person("Heather");
+
+  console.log(person1 instanceof Person);      // logs true
+  console.log(person1.constructor === Person); // logs true
+  console.log(person1.constructor === Object); // logs false
+
+  console.log(person2 instanceof Person);      // logs true
+  console.log(person2.constructor === Person); // logs true
+  console.log(person2.constructor === Object); // logs false
+</script>
 
 </body>
 </html>
