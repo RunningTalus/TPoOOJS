@@ -77,9 +77,25 @@
   // sayName() and toString() methods are defined on the prototype
   // Eliminates the need to type Person.prototype multiple times
 
-  //
+</script>
+
+//
+
+<p>Side Effects: Using object literal notation to overwrite the prototype changed the <i>constructor</i> property so that it now points to <i>Object</i> instead of <i>Person</i></p>
+<script>
+
+  var person1 = new Person("Nicholas");
+
+  console.log(person1 instanceof Person);      // logs true
+  console.log(person1.constructor === Person); // logs false
+  console.log(person1.constructor === Object); // logs true
 
 </script>
+
+//
+
+
+
 
 
 </body>
