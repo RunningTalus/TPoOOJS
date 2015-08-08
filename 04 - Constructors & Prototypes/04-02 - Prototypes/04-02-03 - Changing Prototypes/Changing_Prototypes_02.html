@@ -29,15 +29,14 @@
   var person1 = new Person("Butch Cassidy"); // Two instances of Person are created
   var person2 = new Person("Sundance Kid");
 
-  console.log("sayHi" in person1);           // logs false
-  console.log("sayHi" in person2);           // logs false
+  Object.freeze(person1);                    // person1 Object is frozen
 
   Person.prototype.sayHi = function() {      // Person type sayHi method is added to the prototype.
     console.log("Hi!");
   };
 
-  person1.sayHi();
-  person2.sayHi();
+  person1.sayHi(); // logs "Hi!" because the property itself is frozen, BUT the value (an object) is NOT.
+  person2.sayHi(); // logs "Hi!"
 
 </script>
 
