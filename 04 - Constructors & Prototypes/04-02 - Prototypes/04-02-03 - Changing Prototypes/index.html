@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>CONSTRUCTORS & PROTOTYPES</h1>
+<h2>Changing Prototypes</h2>
+
+<script>
+  function Person(name) {
+    this.name = name;
+  }
+
+  Person.prototype = {
+    constructor: Person,
+
+    sayName: function() {                  // Person type sayName method
+      console.log(this.name);
+    },
+
+    toString: function() {                 // Person type toString method
+      return "[Person " + this.name + "]";
+    }
+
+  };
+
+  var person1 = new Person("Butch Cassidy"); // Two instances of Person are created
+  var person2 = new Person("Sundance Kid");
+
+  console.log("sayHi" in person1);           // logs false
+  console.log("sayHi" in person2);           // logs false
+
+  Person.prototype.sayHi = function() {      // Person type sayHi method is added to the prototype.
+    console.log("Hi!");
+  };
+
+  person1.sayHi();
+  person2.sayHi();
+
+</script>
+
+</body>
+</html>
