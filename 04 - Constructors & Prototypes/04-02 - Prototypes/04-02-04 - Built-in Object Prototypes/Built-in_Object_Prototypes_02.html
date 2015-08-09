@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>CONSTRUCTORS & PROTOTYPES</h1>
+<h2>Prototypes</h2>
+<h3>Built-in Object Prototypes 02</h3>
+
+<script>
+
+String.prototype.capitalize = function() {                         // Creates a new method called capitalize() for strings
+  return this.charAt(0).toUpperCase() + this.substring(1);
+};
+
+  var message = "can you dig it?";
+
+  console.log(message.capitalize()); // logs "Can you dig it?"
+
+</script>
+
+<p>NOTE: Don't modify built-in Objects.</p>
+
+</body>
+</html>
