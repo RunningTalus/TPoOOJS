@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>CONSTRUCTORS & PROTOTYPES</h1>
+<h2>Prototypes</h2>
+<h3>Built-in Object Prototypes 01</h3>
+
+<script>
+
+  Array.prototype.sum = function() {                    // method sum is created on the Array.prototype
+    return this.reduce(function(previous, current) {    // this refers to the variable numbers, which is an instance of Array, and can use array methods i.e. reduce
+      return previous + current;
+    });
+  };
+
+  var numbers = [1, 2, 3, 4, 5, 6]; // numbers is an instance of Array
+  var result = numbers.sum();       // numbers Array has access to sum methods
+
+  console.log(result);  // logs 21
+
+</script>
+
+</body>
+</html>
