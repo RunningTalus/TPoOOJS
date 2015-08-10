@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Functions</h1>
+<h2>Declarations vs Expressions</h2>
+<h3>03 Function Declaration - Hoisting</h3>
+
+<script>
+
+  var result = add(5,5);
+
+  function add(num1, num2) {
+    return num1 + num2;
+  }
+
+  console.log(result); // logs 10
+
+  // JS Engine interprets the code like this:
+
+  // It hoists the add function to the top, because the function name is known ahead of time.
+
+  // It CANNOT hoist function expressions, because the function can ONLY be referenced through a variable.
+
+  /*
+    function add(num1, num2) {
+      return num1 + num2;
+    }
+
+    var result = add(5,5);
+  */
+
+
+
+
+
+</script>
+
+</body>
+</html>
