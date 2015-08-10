@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Functions</h1>
+<h2>Declarations vs Expressions</h2>
+<h3>04 Function Expression - Cannot be Hoisted</h3>
+
+<script>
+
+  var result = add(5,5);              // ERROR!
+
+  var add = function(num1, num2) {
+    return num1 + num2;
+  };
+
+  console.log(result);                // logs Uncaught TypeError: add is not a function
+
+
+</script>
+
+</body>
+</html>
