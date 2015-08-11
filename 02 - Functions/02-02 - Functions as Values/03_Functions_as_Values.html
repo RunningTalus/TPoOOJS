@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Functions</h1>
+<h2>03 Functions as Values</h2>
+
+<script>
+
+  var numbers = [1, 5, 8, 4, 7, 10, 2, 6];
+
+  // the comparison function that is passed into sort is an anonymous function expression.
+  numbers.sort(function(first, second) {  // Subtracting the two values returns the correct result from the comparison function.
+    return first - second;
+  });
+                            // uses the comparison function above
+  console.log(numbers);     // logs [1, 2, 4, 5, 6, 7, 8, 10]
+
+  numbers.sort();           // Does not use the comparative function above.
+
+                            // 1, 10 because all numbers are converted to strings before comparison
+  console.log(numbers);     // logs [1, 10, 2, 4, 5, 6, 7, 8]
+
+</script>
+
+</body>
+</html>
