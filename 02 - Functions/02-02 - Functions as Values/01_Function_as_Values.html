@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Functions</h1>
+<h2>Functions as Values</h2>
+
+<p>JavaScript has first-class functions, you can use them just as you do any other objects.</p>
+<ul>
+  <li>Assign them to variables</li>
+  <li>Add them to objects</li>
+  <li>Pass them to other functions as arguments</li>
+  <li>Return them from functions</li>
+</ul>
+<p>Use functions like any other reference value</p>
+
+<script>
+
+  function sayHi() {      // function declaration for sayHi
+    console.log("Hi!");
+  }
+
+  sayHi();  // logs "Hi!"
+
+  var sayHi2 = sayHi;     // variable is create and assigned the VALUE of sayHi function
+
+  sayHi2(); // logs "Hi!"
+
+
+</script>
+
+</body>
+</html>
