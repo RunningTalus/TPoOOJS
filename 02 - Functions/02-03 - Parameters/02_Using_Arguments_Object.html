@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Functions</h1>
+<h2>Parameters</h2>
+<h3>Using Arguments Object</h3>
+
+<script>
+
+  function sum() {              // sum() function accepts any number of parameters.
+
+    var result = 0;
+    var i = 0;
+    var len = arguments.length;
+
+    while (i < len) {           // parameters are added together by iterating over the values in arguments with a while loop.
+      result += arguments[i];
+      i++;
+    }
+
+    return result;
+
+  }
+
+  console.log(sum(1,2));      // logs 3
+  console.log(sum(3,4,5,6));  // logs 18
+  console.log(sum(50));       // logs 50
+  console.log(sum());         // logs 0
+                              // passing no arguments works, because result is initialized with a value of 0.
+</script>
+
+</body>
+</html>
