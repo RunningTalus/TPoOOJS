@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Functions</h1>
+<h2>Parameters</h2>
+<h3>Passing Parameters</h3>
+
+<p><i>arguments</i> - function parameters stored in an array-like structure.</p>
+<p>NOTE: <i>Array.isArray(arguments);</i> will return <i>false</i></p>
+<p><i>length</i> property - indicates the functions <i>arity</i>, or the number of parameters a function expects</p>
+<p>Knowing a function's <i>arity</i> is important in JavaScript, because it will not throw an error if it is passed too few or too many parameters.</p>
+
+<script>
+
+  function reflect(value) {
+    return value;
+  }
+
+  console.log(reflect("Hi!"));          // logs "Hi!"
+  console.log(reflect("Hello!", 25));   // logs "Hello!"
+  console.log(reflect.length);          // logs 1, the reflect function has an arity of 1 for the value parameter
+
+  reflect = function() {
+    return arguments[0];
+  };
+
+  console.log(reflect("Aloha!"));        // logs "Aloha!"
+  console.log(reflect("Bonjour!", 34));  // logs "Bonjour!"
+  console.log(reflect.length);           // logs 0, there are no parameters passed into the reflect function
+
+</script>
+
+</body>
+</html>
