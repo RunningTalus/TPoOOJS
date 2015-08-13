@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Functions</h1>
+<h2>Overloading</h2>
+<h3>03 Using Arguments Object</h3>
+
+
+<script>
+
+  function sayMessage(message) {
+    if (arguments.length === 0) {
+      message = "Default message";
+    }
+
+    console.log(message);
+  }
+
+  sayMessage("Bonzai!");  // logs "Bonzai!"
+  sayMessage();           // logs "Default message";, because no arguments are passed in i.e. arguments.length === 0
+
+</script>
+
+</body>
+</html>
