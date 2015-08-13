@@ -7,12 +7,12 @@
 <body>
 <h1>Functions</h1>
 <h2>Overloading</h2>
-<h3>01 Function Overloading</h3>
-<p><i>function overloading</i> - the ability of a single function to have multiple signatures, this is supported in most OO languages.</p>
+<h3>02 Function Overloading Compared</h3>
+
 
 <script>
 
-  function sayMessage(message) {
+/*  function sayMessage(message) {
     console.log(message);
   }
 
@@ -21,8 +21,13 @@
   }
 
   sayMessage("Hello!");  // logs "Default message," because the second sayMessage function is the last one.
+*/
 
-  //
+  var sayMessage = new Function("message", "console.log(message);");
+
+  sayMessage = new Function("console.log(\"Default message\");");
+
+  sayMessage("Hello!");  // logs "Default message"
 
 
 
