@@ -7,11 +7,12 @@
 <body>
 <h1>Functions</h1>
 <h2>Object Methods</h2>
-<p><i>method</i> - when a property value is actually a function.</p>
+<h3>01 The <i>this</i> Object</h3>
+
 
 <script>
 
-  var person = {
+/*  var person = {
     name: "Uncle Buck",
     sayName: function() {
       console.log(person.name);
@@ -19,6 +20,16 @@
   };
 
   person.sayName(); // logs "Uncle Buck"
+*/
+
+var person = {
+  name: "Uncle Buck",
+  sayName: function() {
+    console.log(this.name);  // replaced person.name with this.name
+  }
+};
+
+person.sayName(); // logs "Uncle Buck"
 
 
 </script>
