@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Functions</h1>
+<h2>Object Methods</h2>
+<p><i>method</i> - when a property value is actually a function.</p>
+
+<script>
+
+  var person = {
+    name: "Uncle Buck",
+    sayName: function() {
+      console.log(person.name);
+    }
+  };
+
+  person.sayName();  // logs "Uncle Buck"
+
+
+</script>
+
+</body>
+</html>
