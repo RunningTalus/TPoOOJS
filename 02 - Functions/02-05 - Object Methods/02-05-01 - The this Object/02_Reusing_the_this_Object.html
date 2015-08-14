@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Functions</h1>
+<h2>Object Methods</h2>
+<h3>02 Reusing the <i>this</i> Object</h3>
+
+
+<script>
+
+  function sayNameForAll() {
+    console.log(this.name);
+  }
+
+  var person1 = {
+    name: "General Eisenhower",
+    sayName: sayNameForAll
+  };
+
+  var person2 = {
+    name: "General de Gaulle",
+    sayName: sayNameForAll
+  };
+
+  var name = "Prime Minister Churchill";  // name is a global variable that is a property of the global object.
+
+  person1.sayName(); // references sayName property of person1, calling the sayNameForAll Method, logging "General Eisenhower"
+
+  person2.sayName(); // references sayName property of person2, calling the sayNameForAll Method, logging "General de Gaulle"
+
+  sayNameForAll(); // logs "Prime Minister Churchill", as this references the variable name in the Global context.
+
+
+</script>
+
+</body>
+</html>
