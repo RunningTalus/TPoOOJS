@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Functions</h1>
+<h2>Object Methods</h2>
+<h3>Changing <i>this</i></h3>
+<h4>01 The <i>call()</i> Method</h4>
+
+
+<script>
+
+  function sayNameForAll(label) {          // The first parameter of 'call()' is the value to which 'this' should be equal when the function is executed.
+    console.log(label + ":" + this.name);
+  }
+
+  var person1 = {
+    name: "Tony Soprano"
+  };
+
+  var person2 = {
+    name: "Paulie Gaultieri"
+  };
+
+  var name = "Christopher Moltisanti";
+
+  sayNameForAll.call(this, "global");     // logs global:Christopher Moltisanti , variable 'name' is a global object and the context for this.
+  sayNameForAll.call(person1, "person1"); // logs person1:Tony Soprano
+  sayNameForAll.call(person2, "person2"); // logs person2:Paulie Gaultieri
+
+</script>
+
+</body>
+</html>
