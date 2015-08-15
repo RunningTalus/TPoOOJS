@@ -9,6 +9,7 @@
 <h2>Object Methods</h2>
 <h3>Changing <i>this</i></h3>
 <h4>01 The <i>call()</i> Method</h4>
+<p>Because the <i>call()</i> Method is being used, you do NOT need to add the function directly onto each object-you explicitly specify the value of <i>this</i> instead of letting the JS engine do it automatically.</p>
 
 
 <script>
@@ -27,7 +28,8 @@
 
   var name = "Christopher Moltisanti";
 
-  sayNameForAll.call(this, "global");     // logs global:Christopher Moltisanti , variable 'name' is a global object and the context for this.
+  // sayNameForAll function is accessed as an object, NOTE: no () after the function name.
+  sayNameForAll.call(this, "global");     // logs global:Christopher Moltisanti , variable 'name' is a global object and the context for 'this.'
   sayNameForAll.call(person1, "person1"); // logs person1:Tony Soprano
   sayNameForAll.call(person2, "person2"); // logs person2:Paulie Gaultieri
 
