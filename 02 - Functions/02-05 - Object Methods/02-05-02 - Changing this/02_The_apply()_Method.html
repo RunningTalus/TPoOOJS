@@ -9,9 +9,31 @@
 <h2>Object Methods</h2>
 <h3>Changing <i>this</i></h3>
 <h4>02 The <i>apply()</i> Method</h4>
+<h4>When to use <i>call()</i> Method vs <i>apply()</i> Method.</h4>
+<p><i>call()</i> Method - Use with individual variables</p>
+<p><i>apply()</i> Method - Use with Arrays of data.</p>
+<h5><i>call()</i> and <i>apply()</i> methods behave exactly the same.</h5>
 
 
 <script>
+
+  function sayNameForAll(label) {
+    console.log(label + ":" + this.name);
+  }
+
+  var person1 = {
+    name: "Homer Simpson"
+  };
+
+  var person2 = {
+    name: "Marge Simpson"
+  };
+
+  var name = "Bart Simpson";
+
+  sayNameForAll.apply(this, ["global"]);     // logs global:Bart Simpson    NOTE: second argument passed is an []
+  sayNameForAll.apply(person1, ["person1"]); // logs person1:Homer Simpson  NOTE: second argument passed is an []
+  sayNameForAll.apply(person2, ["person2"]); // logs person2:Marge Simpson  NOTE: second argument passed is an []
 
 
 
