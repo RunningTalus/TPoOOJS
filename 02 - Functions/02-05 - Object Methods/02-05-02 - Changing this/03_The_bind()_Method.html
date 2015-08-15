@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Functions</h1>
+<h2>Object Methods</h2>
+<h3>Changing <i>this</i></h3>
+<h4>03 The <i>bind()</i> Method</h4>
+<p><i>bind()</i> Method - first argument is the value for the new function. All other arguments represent named parameters that should be permanently set in the new function.</p>
+
+
+
+<script>
+
+  function sayNameForAll(label) {
+    console.log(label + ":" + this.name);
+  }
+
+  var person1 = {
+    name: "Fred Flintstone"
+  };
+
+  var person2 = {
+    name: "Barney Rubble"
+  };
+
+  // Create a function for person1
+  var sayNameForPerson1 = sayNameForAll.bind(person1); // No parameters are bound for sayNamePerson1(), 'person1'
+                                                        // represents the label for the output.
+
+  sayNameForPerson1("person1");  // logs Fred Flintstone
+
+
+
+  // Create a function for person2
+  var sayNameForPerson2 = sayNameForAll.bind(person2, "person2");  // 'this' is bound to 'person2', AND binds the first parameter as "person2"
+                                                                   // sayNameForPerson2(); can be called without passing any additional parameters.
+  sayNameForPerson2();   // logs Barney Rubble
+
+
+
+  // Attaching a Method to an Object does NOT change 'this'
+  person2.sayName = sayNameForPerson1;   // The function is bound, so the value of 'this' does not change even though
+                                         // sayNameForPerson1 is now a function on person2. The method still outputs the
+                                         // value of 'person1.name.'
+
+  person2.sayName("person2");   // logs Fred Flintstone
+
+
+
+
+</script>
+
+</body>
+</html>
