@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Understanding Objects</h1>
+<h2>01 Detecting Properties</h2>
+<p><i>truthy</i> - values that evaluate to true.</p>
+<ul>
+  <li>objects</li>
+  <li>a nonempty string</li>
+  <li>a nonzero number</li>
+  <li><i>true</i></li>
+</ul>
+<p><i>falsy</i> - values that evaluate to false.</p>
+<ul>
+  <li><i>null</i></li>
+  <li><i>undefined</i></li>
+  <li>0</li>
+  <li><i>NaN</i></li>
+  <li><i>false</i></li>
+</ul>
+<h3>Using the <i>in</i> operator</h3>
+<p>The <i>in</i> operator is a more reliable way to test for the existence of a property.</p>
+
+<script>
+
+  var person1 = {
+    name: "Richard Nixon"
+  };
+
+  var person2 = new Object();
+  person2.name = "Richard Nixon";
+
+  person1.age = "Redacted";
+  person2.age = "Redacted";
+
+  person1.name = "Gerald Ford";
+  person2.name = "Dick Cheney";
+
+
+  // unreliable
+  if (person1.age) {           // evaluates to true as long as the value is truthy.
+    // do something with age...
+  }
+
+</script>
+
+</body>
+</html>
