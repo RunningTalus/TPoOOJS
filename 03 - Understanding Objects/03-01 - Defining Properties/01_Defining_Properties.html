@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Understanding Objects</h1>
+<h2>Defining Properties</h2>
+<p><i>[[put]]</i> - An internal JavaScript Method used on objects when properties are intially added. The <i>[[put]]</i> Method creates a spot in the object to stroe the property.</p>
+<p><i>own property</i> - Indicates that the specific instance of the object owns that property.</p>
+<p>The property is stored directly on the instance, and ALL operations on the property must be performed through that object.</p>
+<p><i>[[set]]</i> - An internal JavaScript Method used on objects when a new value is assigned to an existing property</p>
+
+<script>
+
+  var person1 = {
+    name: "Richard Nixon"
+  };
+
+  var person2 = new Object();
+  person2.name = "Richard Nixon"; // [[put]] method invoked, 'own property' created on the object
+
+  person1.age = "Redacted";       // [[put]] method invoked, 'own property' created on the object
+  person2.age = "Redacted";       // [[put]] method invoked, 'own property' created on the object
+
+  person1.name = "Gerald Ford"; // [[set]] method invoked
+  console.log(person1.name);    // logs "Gerald Ford"
+  console.log(person1.age);     // logs "Redacted"
+
+  person2.name = "Dick Cheney"; // [[set]] method invoked
+  console.log(person2.name);    // logs "Dick Cheney"
+  console.log(person2.age);     // logs "Redacted"
+
+
+
+</script>
+
+</body>
+</html>
