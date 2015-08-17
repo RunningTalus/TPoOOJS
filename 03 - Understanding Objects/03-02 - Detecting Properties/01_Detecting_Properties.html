@@ -31,20 +31,17 @@
     name: "Richard Nixon"
   };
 
-  var person2 = new Object();
-  person2.name = "Richard Nixon";
-
   person1.age = "Redacted";
-  person2.age = "Redacted";
-
-  person1.name = "Gerald Ford";
-  person2.name = "Dick Cheney";
 
 
-  // unreliable
-  if (person1.age) {           // evaluates to true as long as the value is truthy.
-    // do something with age...
-  }
+   // unreliable
+   // if (person1.age) {    // evaluates to true as long as the value is truthy.
+   //  do something with age...
+   // }
+
+  console.log("name" in person1);  // logs true
+  console.log("age" in person1);   // logs true
+  console.log("title" in person1); // logs false
 
 </script>
 
