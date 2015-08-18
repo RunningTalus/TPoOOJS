@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Understanding Objects</h1>
+<h2>Detecting Properties</h2>
+<h3>02 hasOwnProperty()</h3>
+<p><i>truthy</i> - values that evaluate to true.</p>
+<ul>
+  <li>objects</li>
+  <li>a nonempty string</li>
+  <li>a nonzero number</li>
+  <li><i>true</i></li>
+</ul>
+<p><i>falsy</i> - values that evaluate to false.</p>
+<ul>
+  <li><i>null</i></li>
+  <li><i>undefined</i></li>
+  <li>0</li>
+  <li><i>NaN</i></li>
+  <li><i>false</i></li>
+</ul>
+<h4>Using the <i>in</i> operator</h4>
+<p>The <i>in</i> operator is a more reliable way to test for the existence of a property.</p>
+<p>The <i>in</i> operator checks for both own properties and prototype properties.</p>
+<p>The <i>in</i> operator does NOT evaluate the value of the property.</p>
+<p><i>hasOwnProperty()</i> - is present on ALL objects, BUT returns <i>true</i> only if the given property exists and is an own property.</p>
+
+<script>
+
+  var person1 = {
+    name: "Mad Max",
+    sayName: function() {
+      console.log(this.name);
+    }
+  };
+
+  console.log("name" in person1);              // logs true, because 'name' is an own property of person1
+  console.log(person1.hasOwnProperty("name")); // logs true, because 'name' is an own property of person1
+
+  console.log("toString" in person1);              // logs true, because the toString() method is a prototype property on all objects
+  console.log(person1.hasOwnProperty("toString")); // logs false, because person1 does NOT have its own toString method.  toString() method is only available on the prototype.
+
+
+</script>
+
+</body>
+</html>

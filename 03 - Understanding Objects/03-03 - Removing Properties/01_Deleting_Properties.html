@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Understanding Objects</h1>
+<h2>Removing Properties</h2>
+<h3>01 Deleting Properties</h3>
+
+<script>
+
+  var person1 = {
+    name: "George Patton"
+  };
+
+  console.log("name" in person1);  // logs true
+
+  delete person1.name;
+
+  console.log("name" in person1);  // logs false
+  console.log(person1.name);       // logs undefined
+
+
+</script>
+
+</body>
+</html>
