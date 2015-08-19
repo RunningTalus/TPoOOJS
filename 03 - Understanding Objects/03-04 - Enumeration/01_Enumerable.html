@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Understanding Objects</h1>
+<h2>Enumeration</h2>
+
+
+<script>
+
+var property;
+
+  for (property in object) {                  // logs Uncaught ReferenceError: object is not defined
+    console.log("Name: " + property);
+    console.log("Value: "+ object[property]);
+  }
+
+</script>
+
+</body>
+</html>
