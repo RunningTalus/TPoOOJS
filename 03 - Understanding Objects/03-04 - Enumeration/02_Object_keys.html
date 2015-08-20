@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Understanding Objects</h1>
+<h2>Enumeration</h2>
+
+
+<script>
+
+  var properties = Object.keys(object);            // Uncaught ReferenceError: object is not defined
+
+  // if you want to mimic for-in loop behavior
+
+  var i, len;
+
+  for (i=0, len=properties.length; i < len; i++) {
+    console.log("Name: " + properties[i]);
+    console.log("Value: " + object[properties[i]]);
+  }
+
+
+</script>
+
+</body>
+</html>
