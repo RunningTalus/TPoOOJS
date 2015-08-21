@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Understanding Objects</h1>
+<h2>Enumeration</h2>
+
+
+<script>
+
+  var person1 = {
+    name: "Alex"
+  };
+
+  console.log("name" in person1);                     // logs true
+  console.log(person1.propertyIsEnumerable("name"));  // logs true
+
+  var properties = Object.keys(person1);
+
+  console.log("length" in properties);                     // logs true
+  console.log(properties.propertyIsEnumerable("length"));  // logs false, because it is not enumerable.
+                                                           // The length property for the properties array is a built-in property on Array.prototype
+
+
+
+</script>
+
+</body>
+</html>
