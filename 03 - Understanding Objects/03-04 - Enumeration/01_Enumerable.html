@@ -7,11 +7,15 @@
 <body>
 <h1>Understanding Objects</h1>
 <h2>Enumeration</h2>
-
+<p>All properties that you add to an object are <i>enumerable</i>, AND can be iterated over with a <i>for-in</i>loop.</p>
+<p>Enumerable properties have an internal <i>[[Enumerable]]</i> attribute set to <i>true</i>.</p>
+<p>Each time through the <i>for-in</i> loop, the <i>property</i> variable is filled with the next enumerable property on the object until all properties have been used.</p>
+<p>Best Use Case of the <i>for-in</i> loop: When you need to operate on property names, and you don't need an array.</p>
+<p>The <i>for-in</i> loop enumerates over both own instance properties and prototype properties.</p>
 
 <script>
 
-var property;
+  var property;
 
   for (property in object) {                  // logs Uncaught ReferenceError: object is not defined
     console.log("Name: " + property);
