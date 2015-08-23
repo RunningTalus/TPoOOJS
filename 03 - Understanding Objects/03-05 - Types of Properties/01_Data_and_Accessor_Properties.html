@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Understanding Objects</h1>
+<h2>Types of Properties</h2>
+<p><i>Data properties</i> - contain a value.</p>
+<p><i>Accessor properties</i> - define a function to call when a property is read (getter), and a function to call when a the property is written to (setter).</p>
+<p></p>
+
+
+<script>
+
+  var person1 = {
+    _name: "Captain Hook",
+
+    get name() {
+      console.log("Reading name");
+      return this._name;
+    },
+
+    set name(value) {
+      console.log("Setting name to %s", value);
+      this._name = value;
+    }
+  };
+
+  console.log(person1.name);  // logs "Reading name" then "Captain Hook"
+
+  person1.name = "Peter Pan";
+
+  console.log(person1.name);  // logs "Setting name to" then "Peter Pan"
+
+
+</script>
+
+</body>
+</html>
