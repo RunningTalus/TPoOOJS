@@ -15,14 +15,15 @@
 <script>
 
   var person1 = {
-    _name: "Captain Hook",
+    _name: "Captain Hook",          // Data Property containing the value "Captain Hook"
+                                    // The leading underscore is a common convention to indicate that the property is considered to be private, though in reality it is public.
 
-    get name() {
+    get name() {                    // Accessor Property returning a value
       console.log("Reading name");
       return this._name;
     },
 
-    set name(value) {
+    set name(value) {                            // Accessor property that receives the value being assigned to a property as an argument.
       console.log("Setting name to %s", value);
       this._name = value;
     }
