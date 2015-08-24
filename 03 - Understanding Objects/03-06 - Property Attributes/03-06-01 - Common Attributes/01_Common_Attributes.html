@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Understanding Objects</h1>
+<h2>Property Attributes</h2>
+<h3>Common Attributes</h3>
+<h4>QTY #2 Property Attributes shared between Data and Accessor Properties</h4>
+<ol>
+  <li><i>[[Enumerable]]</i> - use <i>enumerable</i> to set</li>
+  <li><i>[[Configurable]]</i>- use <i>configurable</i> to set</li>
+</ol>
+<p>Configurable properties can be removed using <i>delete</i>, and changed at any time.</p>
+<p>Change Property Attributes: <i>Object.defineProperty()</i> Method.</p>
+<p>Object.defineProperty() takes QTY #3 Arguments</p>
+<ol>
+  <li>The object that owns the property</li>
+  <li>The property name</li>
+  <li>A <i>property descriptor</i> object containing the attributes to set</li>
+</ol>
+
+
+<script>
+
+  var person1 = {
+    name: "Pablo Escobar"
+  };
+
+  Object.defineProperty(person1, "name", {
+    enumerable: false
+  });
+
+  console.log("name" in person1);                     // logs true
+  console.log(person1.propertyIsEnumerable("name"));  // logs false, because it references the new value of [[Enumerable]]
+
+  var properties = Object.keys(person1);
+  console.log(properties.length);                     // logs 0
+
+  Object.defineProperty(person1, "name", {
+    configurable: false
+  });
+
+  // attempt to delete the Property
+  delete person1.name;                      // 'name' remains "Pablo Escobar" because the property is not configurable
+  console.log("name" in person1);           // logs true
+  console.log(person1.name);                // logs "Pablo Escobar"
+
+  Object.defineProperty(person1, "name", {  // logs Uncaught TypeError: Cannot redefine property: name
+    configurable: true                         // You cannot make a non-configurable property configurable again
+  });
+
+
+
+
+
+</script>
+
+</body>
+</html>
