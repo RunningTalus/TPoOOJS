@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Understanding Objects</h1>
+<h2>Property Attributes</h2>
+<h3>02 Data Property Attributes</h3>
+<p>Data Property Attributes possess QTY #2 additional values that Accessor Properties do NOT.</p>
+<ol>
+  <li><i>[[Value]]</i> - holds the property value, attribute is filled in automatically when you create a property on an object. ALL property values are stroed in <i>[[Value]]</i>, even if the value is a function</li>
+  <li><i>[[Writable]]</i> - Boolean value indicating whether the property can be written to. Defaults to <i>true</i>.</li>
+</ol>
+<p>Use <i>Object.defineProperty();</i> to fully define a data property of an object.</p>
+
+<script>
+
+  var person1 = {};
+
+  Object.defineProperty(person1, "name", {
+    value: "Papa John"
+  });
+
+  console.log("name" in person1);                      // logs true
+  console.log(person1.propertyIsEnumerable("name"));   // logs false, Boolean attribute defaults to false because it was not specified
+
+  delete person1.name;
+  console.log("name" in person1);                      // logs true
+
+  person1.name = "Little Caesar";
+  console.log(person1.name);                           // logs "Little Caesar"
+
+</script>
+
+</body>
+</html>
