@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Understanding Objects</h1>
+<h2>Property Attributes</h2>
+<h3>Data Property Attributes</h3>
+
+<script>
+
+//  var person = {
+//    name: "Douglas MacArthur"
+//  };
+
+  var person1 = {};
+
+  Object.defineProperty(person1, "name", {
+    value: "Douglas MacArthur",
+    enumerable: true,
+    configurable: true,
+    writable: true
+  });
+
+</script>
+
+</body>
+</html>
