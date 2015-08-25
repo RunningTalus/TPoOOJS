@@ -8,6 +8,12 @@
 <h1>Understanding Objects</h1>
 <h2>Property Attributes</h2>
 <h3>Data Property Attributes</h3>
+<p>Data Property Attributes possess QTY #2 additional values that Accessor Properties do NOT.</p>
+<ol>
+<li><i>[[Value]]</i> - holds the property value, attribute is filled in automatically when you create a property on an object. ALL property values are stroed in <i>[[Value]]</i>, even if the value is a function</li>
+<li><i>[[Writable]]</i> - Boolean value indicating whether the property can be written to. Defaults to <i>true</i>.</li>
+</ol>
+<p>Use <i>Object.defineProperty();</i> to fully define a data property of an object.</p>
 
 <script>
 
