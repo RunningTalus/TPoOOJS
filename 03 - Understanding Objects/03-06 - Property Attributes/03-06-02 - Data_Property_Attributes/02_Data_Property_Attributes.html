@@ -14,6 +14,8 @@
   <li><i>[[Writable]]</i> - Boolean value indicating whether the property can be written to. Defaults to <i>true</i>.</li>
 </ol>
 <p>Use <i>Object.defineProperty();</i> to fully define a data property of an object.</p>
+<p>Note: Nonwritable properties throw an error in strict mode when you try to change the value</p>
+<p>Note: In non-strict mode the operation fails silently</p>
 
 <script>
 

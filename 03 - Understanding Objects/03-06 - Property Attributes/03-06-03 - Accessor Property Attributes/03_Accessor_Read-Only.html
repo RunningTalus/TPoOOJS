@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Understanding Objects</h1>
+<h2>Property Attributes</h2>
+<h3>03 Accessor Property READ-ONLY</h3>
+<p>Strict Mode - An accessor property without a setter throws an error in strict mode when you try to change the value.</p>
+<p>Non-Strict Mode - An accessor property without a setter fails silently.</p>
+<script>
+
+  var person1 = {
+    _name: "Michael Jordan"
+  };
+
+  Object.defineProperty(person1, "name", {
+    get: function() {
+      console.log("Reading name:");
+      return this._name;                               // The 'name' property is a [[Get]] accessor property attribute
+    }
+  });
+
+  console.log("name" in person1);                      // logs true
+  console.log(person1.propertyIsEnumerable("name"));   // logs false, by default because there is no [[Enumerable]] attribute specified
+
+  delete person1.name;
+
+  console.log("name" in person1);                      // logs true
+
+  person1.name = "Kobe Bryant";                        // The 'name' property is a [[Get]] accessor property attribute, no [[Set]] accessor property attribute. Values are READ-ONLY
+  console.log(person1.name);                           // logs "Reading Name"
+                                                       // logs "Michael Jordan"
+
+
+</script>
+
+</body>
+</html>

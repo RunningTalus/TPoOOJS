@@ -9,7 +9,7 @@
 <h2>Types of Properties</h2>
 <p><i>Data properties</i> - contain a value.</p>
 <p><i>Accessor properties</i> - define a function to call when a property is read (getter), and a function to call when a the property is written to (setter).</p>
-<p></p>
+<p>NOTE: You don't need to define both a getter and a setter; you can choose one or both. If you define only a getter, then the property becomes read-only, and attempts to write to it will fail silently in nonstrict mode and throw an error in strict mode. If you define only a setter, then the property becomes write-only, and attempts to read the value will fail silently in both strict and nonstrict modes.</p>
 
 
 <script>
