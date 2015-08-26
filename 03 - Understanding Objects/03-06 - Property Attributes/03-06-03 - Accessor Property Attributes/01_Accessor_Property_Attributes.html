@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Understanding Objects</h1>
+<h2>Property Attributes</h2>
+<h3>01 Accessor Property Attributes</h3>
+<p>NOTE: If you try to create a property with BOTH data and accessor attributes, you will get an ERROR.</p>
+<p>Accessor properties just have <i>[[Get]]</i> and <i>[[Set]]</i> functions.</p>
+
+<script>
+
+  var person1 = {
+    _name: "Clarence",
+
+    get name() {
+      console.log("Reading name");
+      return this.name;
+    },
+
+    set name() {
+      console.log("Setting name to %s", value);
+      this._name = value;
+    }
+
+  };
+
+
+</script>
+
+</body>
+</html>
