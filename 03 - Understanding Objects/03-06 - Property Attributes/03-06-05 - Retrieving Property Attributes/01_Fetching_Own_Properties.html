@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Understanding Objects</h1>
+<h2>Property Attributes</h2>
+<h3>Retrieving Property Attributes</h3>
+<p><i>Object.getOwnPropertyDescriptor();</i> only works on 'own' properties.</p>
+<p><i>Object.getOwnPropertyDescriptor(object name, property name);</i> takes QTY#2 arguments</p>
+
+<script>
+
+  var person1 = {              // person1 is the object name
+    name: "Alexi Lalas"        // "name" is the property name
+  };
+
+  var descriptor = Object.getOwnPropertyDescriptor(person1, "name");
+
+  console.log(descriptor.configurable);  // logs true
+  console.log(descriptor.enumerable);    // logs true
+  console.log(descriptor.value);         // logs "Alexi Lalas"
+  console.log(descriptor.writable);      // logs true
+
+</script>
+
+</body>
+</html>
