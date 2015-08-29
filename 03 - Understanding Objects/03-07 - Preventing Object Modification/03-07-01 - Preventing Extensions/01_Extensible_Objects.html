@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Understanding Objects</h1>
+<h2>Preventing Object Modification</h2>
+<h3>Preventing Extensions</h3>
+<p>Object attribute<i>[[Extensible]]</i> - Boolean value indicating if the object itself can be modified.</p>
+<p>ALL objects are <i>[[Extensible]]</i> by default.</p>
+<p>You can check the value of <i>[[Extensible]]</i> by using <i>Object.isExtensible(object);</i>.</p>
+<p>Create an nonextensible object with<i>Object.preventExtensions(object);</i>.</p>
+<p>NOTE: Attempting to add a property to a nonextensible object will throw an error in strict mode. In nonstrict mode, the operation fails silently. You should always use strict mode with nonextensible objects so that you are aware when a nonextensible objects is being used incorrectly.</p>
+
+
+<script>
+
+  var person1 = {
+    name: "Shaquille O'Neal"
+  };
+
+  console.log(Object.isExtensible(person1));  // logs true
+
+  Object.preventExtensions(person1);
+  console.log(Object.isExtensible(person1));  // logs false
+
+  person1.sayName = function(){  // sayName method is NEVER added, because it is now a nonextensible object.
+    console.log(this.name);
+  };
+
+  console.log("sayName" in person1);  // logs false
+
+
+
+
+</script>
+
+</body>
+</html>
