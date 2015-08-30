@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Understanding Objects</h1>
+<h2>Preventing Object Modification</h2>
+<h3>Sealing Objects</h3>
+<p><i>Object.seal(object);</i> - A method on an object to seal it.</p>
+<p><i>Object.seal(object);</i> - Once sealed, <i>[[Extensible]]</i> attribute and <i>[[Configurable]]</i> attributes are set to <i>false</i>.</p>
+<p>Use <i>Object.isSealed(object);</i> to check whether an object is sealed.</p>
+<p>NOTE: Be sure to use strict mode with sealed objects, so you'll get an error when someone tries to use the object incorrectly.</p>
+
+
+<script>
+
+  var person1 = {
+    name: "Dwyane Wade"
+  };
+
+  console.log(Object.isExtensible(person1));  // logs true
+  console.log(Object.isSealed(person1));      // logs false
+
+  Object.seal(person1);                       // person1 Object is SEALED, you CANNOT add or remove properties.
+  console.log(Object.isExtensible(person1));  // logs false
+  console.log(Object.isSealed(person1));      // logs true
+
+  person1.sayName = function () {             // sayName Method FAILS silently
+    console.log(this.name);
+  };
+  console.log("sayName" in person1);  // logs false
+
+  person1.name = "Pat Riley"; // Even though the person1 object is SEALED, you can still change the value, you just can't add any new properties or remove existing properties.
+  console.log(person1.name); // logs "Pat Riley"
+
+  delete person1.name;
+  console.log("name" in person1); // logs true
+  console.log(person1.name);      // logs "Pat Riley"
+
+  var descriptor = Object.getOwnPropertyDescriptor(person1, "name");
+  console.log(descriptor.configurable);  // logs false
+
+
+</script>
+
+</body>
+</html>
