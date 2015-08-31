@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Understanding Objects</h1>
+<h2>Preventing Object Modification</h2>
+<h3>Freezing Objects</h3>
+<p>Frozen Objects - CANNOT add or remove properties, CANNOT change properties' types, CANNOT write to ANY data properties.</p>
+<p>A frozen object is a sealed object where data are READ-ONLY.</p>
+<p>FROZEN OBJECTS ARE NONEXTENSIBLE.</p>
+<p>FROZEN OBJECTS CANNOT BECOME UNFROZEN</p>
+<p><i>Object.freeze(object);</i></p>
+<p><i>Object.isFrozen(object);</i></p>
+<p>NOTE: Frozen objects are simply snapshots of an object at a particular point in time. You should only use strict mode with all nonextensible objects.</p>
+
+
+<script>
+
+  var person1 = {
+    name: "Major Tom"
+  };
+
+  console.log(Object.isExtensible(person1));  // logs true
+  console.log(Object.isFrozen(person1));      // logs false
+  console.log(Object.isSealed(person1));      // logs false
+
+  Object.freeze(person1);
+  console.log(Object.isExtensible(person1));  // logs false
+  console.log(Object.isFrozen(person1));      // logs true
+  console.log(Object.isSealed(person1));      // logs true
+
+  person1.sayName = function() {
+    console.log(this.name);
+  };
+
+  console.log("sayName" in person1); // logs false
+
+  person1.name = "Ground Control";
+  console.log(person1.name);         // logs "Major Tom"
+
+  delete person1.name;               // FAILS silently, Object is frozen, cannot
+  console.log("name' in person1");   // logs true
+  console.log(person1.name);         // logs "Major Tom"
+
+  var descriptor = Object.getOwnPropertyDescriptor(person1, "name");
+  console.log(descriptor.configurable);                               // log false
+  console.log(descriptor.writable);                                   // log false
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
