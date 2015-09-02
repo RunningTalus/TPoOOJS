@@ -8,7 +8,8 @@
 <h1>Inheritance</h1>
 <h2>Prototype Chaining and Object.prototype</h2>
 <h3><i>toString()</i> Method</h3>
-<p><i>toString()</i> method is called as a fallback whenever a <i>valueOf()</i>returns a reference value instead of a primitive value.</p>
+<p><i>toString()</i> method is called as a fallback whenever a <i>valueOf()</i> returns a reference value instead of a primitive value.</p>
+<p>Example: When a string is used for one operand for the plus operator, the other operand is automatically converted to a string. If the other operand is a primitive value, it is converted to a string. If it is a reference value, <i>valueOf()</i> is called, if <i>valueOf()</i> returns a reference value- <i>toString()</i> is called.</p>
 
 <script>
 
@@ -18,7 +19,6 @@
 
   var message = "Book = " + book;
   console.log(message);            // logs "Book = [object Object]"
-
 
 
 </script>
