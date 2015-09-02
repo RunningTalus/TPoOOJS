@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Inheritance</h1>
+<h2>Prototype Chaining and Object.prototype</h2>
+<h3><i>valueOf()</i> Method</h3>
+<p><i>valueOf()</i> Method is called when an operator is used on an object.</p>
+<p>By default <i>valueOf()</i> returns the object instance.</p>
+<p>Primitive wrapper types override <i>valueOf()</i></p>
+<ul>
+  <li><i>valueOf()</i> returns a string for <i>string</i>.</li>
+  <li><i>valueOf()</i> returns a Boolean for <i>Boolean</i>.</li>
+  <li><i>valueOf()</i> returns a number for <i>Number</i>.</li>
+</ul>
+<p>The <i>Date</i> objects's <i>valueOf()</i> method returns the epoch time in milliseconds. This is the same thing that <i>Date.prototype.getTime()</i> does.</p>
+
+<script>
+
+  var now = new Date();
+  //  console.log(now);
+  var earlier = new Date(2010, 1, 1);
+  //  console.log(earlier);
+
+  console.log(now > earlier);        // logs true
+
+</script>
+
+</body>
+</html>

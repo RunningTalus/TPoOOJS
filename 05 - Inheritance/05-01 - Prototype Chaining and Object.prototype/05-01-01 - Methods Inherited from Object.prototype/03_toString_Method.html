@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Inheritance</h1>
+<h2>Prototype Chaining and Object.prototype</h2>
+<h3><i>toString()</i> Method</h3>
+<p><i>toString()</i> method is called as a fallback whenever a <i>valueOf()</i>returns a reference value instead of a primitive value.</p>
+
+<script>
+
+  var book = {
+    title: "Drift Boats & River Dories"
+  };
+
+  var message = "Book = " + book;
+  console.log(message);            // logs "Book = [object Object]"
+
+
+
+</script>
+
+</body>
+</html>
