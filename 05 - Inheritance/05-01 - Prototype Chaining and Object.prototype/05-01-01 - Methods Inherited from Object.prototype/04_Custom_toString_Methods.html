@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Inheritance</h1>
+<h2>Prototype Chaining and Object.prototype</h2>
+<h3>Defining a Custom <i>toString()</i> Method</h3>
+<p>Defining a custom <i>toString()</i> Method provides a more useful output than [object Object]</p>
+
+<script>
+
+  var book = {
+    title: "The Snow Leopard",
+    toString: function() {                // Custom defined toString() Method to replace the Object.prototype toString() Method.
+      return "[Book " + this.title + "]"
+    }
+  };
+
+  var message = "Book = " + book;  // Since book is an object it will call the newly defined toString() Method
+
+  console.log(message);  // logs "Book = [Book The Snow Leopard]"
+
+
+</script>
+
+</body>
+</html>
