@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Inheritance</h1>
+<h2>Prototype Chaining and Object.prototype</h2>
+<h3>Modifying <i>Object.prototype</i></h3>
+<h4>03 Adding properties to <i>Object.prototype</i></h4>
+<p>Adding properties to <i>Object.prototype</i> has side effects, the <i>add()</i> property is enumerable, and can be iterated over with a <i>for-in</i> loop.</p>
+<p>Crockford recommends using <i>hasOwnProperty()</i>, for <i>for-in loops</i> all the time. This limits the use of <i>for-in</i> loops to own properties.</p>
+<p>LESSON LEARNED: DO NOT MODIFY <i>Object.prototype</i>.</p>
+
+<script>
+
+  Object.prototype.add = function(value) {  // adds an add() Method to ALL Objects
+    return this + value;
+  };
+
+  var book = {
+    title: "The Snows of Kilimanjaro"
+  };
+
+  console.log(book.add(5));        // logs "[object Object]5"
+
+  console.log("title".add("end")); // logs "titleend"
+
+  // in Chrome Dev Tools
+  console.log(document.add(true)); // logs "[object HTMLDocument]true"
+  console.log(window.add(5));      // logs "[object Window]true"
+
+  //
+
+  var empty = {};
+  for (var property in empty) {
+    if (empty.hasOwnProperty(property)) {
+      console.log(property);               // nothing is logged
+    }
+  }
+
+
+</script>
+
+</body>
+</html>
