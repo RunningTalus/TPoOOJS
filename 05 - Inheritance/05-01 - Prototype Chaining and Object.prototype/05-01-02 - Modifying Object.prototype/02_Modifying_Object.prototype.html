@@ -8,7 +8,8 @@
 <h1>Inheritance</h1>
 <h2>Prototype Chaining and Object.prototype</h2>
 <h3>Modifying <i>Object.prototype</i></h3>
-<h4>Adding properties to <i>Object.prototype</i></h4>
+<h4>02 Adding properties to <i>Object.prototype</i></h4>
+<p>Adding properties to <i>Object.prototype</i> has side effects, the <i>add()</i> property is enumerable, and can be iterated over with a <i>for-in</i> loop.</p>
 
 
 <script>
@@ -28,6 +29,14 @@
   // in Chrome Dev Tools
   console.log(document.add(true)); // logs "[object HTMLDocument]true"
   console.log(window.add(5));      // logs "[object Window]true"
+
+  //
+
+  var empty = {};
+  for (var property in empty) {
+    console.log(property);         // logs "add", because the add Method is enumerable
+  }
+
 
 </script>
 
