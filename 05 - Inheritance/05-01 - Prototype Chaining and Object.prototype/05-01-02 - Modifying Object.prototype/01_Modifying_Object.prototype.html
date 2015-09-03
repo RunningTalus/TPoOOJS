@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Inheritance</h1>
+<h2>Prototype Chaining and Object.prototype</h2>
+<h3>Modifying <i>Object.prototype</i></h3>
+<h4>Adding methods to <i>Object.prototype</i></h4>
+
+
+<script>
+
+  Object.prototype.add = function(value) {  // adds an add() Method to ALL Objects
+    return this + value;
+  };
+
+  var book = {
+    title: "The Snows of Kilimanjaro"
+  };
+
+  console.log(book.add(5));        // logs "[object Object]5"
+
+  console.log("title".add("end")); // logs "titleend"
+
+  // in Chrome Dev Tools
+  console.log(document.add(true)); // logs "[object HTMLDocument]true"
+  console.log(window.add(5));      // logs "[object Window]true"
+
+</script>
+
+</body>
+</html>
