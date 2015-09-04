@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Inheritance</h1>
+<h2>Object Inheritance</h2>
+<p>Two ways of creating new objects.</p>
+<ol>
+  <li>Creating an object literal that is stored in a variable.</li>
+  <li>Using <i>Object.create()</i></li>
+</ol>
+
+<script>
+
+  var book = {                         // inherits configurable, enumerable, and writable from Object.prototype automatically
+    title: "ARC/INFO Quick Reference"
+  };
+
+  // Is the same as
+
+  var book = Object.create(Object.prototype, {
+    title: {
+      configurable: true,
+      enumerable: true,
+      value: "ARC/INFO Quick Reference",
+      writable: true
+    }
+  });
+
+</script>
+
+</body>
+</html>
