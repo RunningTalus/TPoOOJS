@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Inheritance</h1>
+<h2>Object Inheritance</h2>
+<h3>The prototype chain ends with <i>Object.prototype</i>, whose <i>[[Prototype]]</i> is set to <i>null</i>.</h3>
+
+
+<script>
+
+  var person1 = {
+    name: "Tad Hamilton",
+    sayName: function() {
+      console.log(this.name);
+    }
+  };
+
+  var person2 = Object.create(person1, { // passing person1 object into Object.create()
+    name: {                              // name is an own property defined on person2, that shadows the prototype property of the same name and is used in its place.
+      configurable: true,
+      enumerable: true,
+      value: "Jim Donovan",
+      writable: true
+    }
+  });
+
+  person1.sayName();  // logs "Tad Hamilton"
+  person2.sayName();  // logs "Jim Donovan", sayName() is inherited from person1 object.
+
+  console.log(person1.hasOwnProperty("sayName"));  // logs true
+  console.log(person1.isPrototypeOf(person2));     // logs true
+  console.log(person2.hasOwnProperty("sayName"));  // logs false, because sayName() is inherited from person1 object.
+
+</script>
+
+</body>
+</html>
