@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Inheritance</h1>
+<h2>Object Inheritance</h2>
+<h3>The prototype chain ends with <i>Object.prototype</i>, whose <i>[[Prototype]]</i> is set to <i>null</i>.</h3>
+<p>By passing <i>null</i> into <i>Object.create()</i> nakedObject is an object with NO prototype chain.</p>
+<p>USE CASE: Creating a lookup hash without any potential naming collisions with inherited property names.</p>
+
+<script>
+
+  var nakedObject = Object.create(null);
+
+  console.log("toString" in nakedObject);  // logs false
+  console.log("valueOf" in nakedObject);   // logs false
+
+
+</script>
+
+</body>
+</html>
