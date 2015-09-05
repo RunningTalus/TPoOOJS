@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Inheritance</h1>
+<h2>Constructor Inheritance</h2>
+
+
+<script>
+
+  function Rectangle(length, width) {
+    this.length = length;
+    this.width = width;
+  }
+
+  Rectangle.prototype.getArea = function() {
+    return this.length * this.width;
+  };
+
+  Rectangle.prototype.toString = function() {
+    return "[Rectangle " + this.length + "x " + this.width + "]";
+  };
+
+
+  // Inherits from Rectangle Constructor
+  function Square(size) {
+    this.length = size;
+    this.width = size;
+  }
+
+  Square.prototype = new Rectangle();                    // Square prototype is overwritten with an instance of Rectangle
+  Square.prototype.constructor = Square;                 // Constructor property is restored on Square.prototype.
+
+  Square.prototype.toString = function() {
+    return"[Square " + this.length + "x " + this.width + "]";
+  };
+
+  var rect = new Rectangle(5,10);           // new instance of Rectangle, and Object
+  var square = new Square(6);               // new instance of Square, Rectangle, and Object
+
+  console.log(rect.getArea());              // logs 50, getArea is inherited from Rectangle
+  console.log(square.getArea());            // logs 36, getArea is inherited from Rectangle
+
+  console.log(rect.toString());             // "[Rectangle 5x10]"
+  console.log(square.toString());           // "[Square 6x6]"
+
+  console.log(rect instanceof Object);      // logs true
+  console.log(rect instanceof Rectangle);   // logs true
+  console.log(rect instanceof Square);      // logs false
+
+
+  console.log(square instanceof Object );   // logs true
+  console.log(square instanceof Square);    // logs true
+  console.log(square instanceof Rectangle); // logs true
+
+
+</script>
+
+</body>
+</html>
