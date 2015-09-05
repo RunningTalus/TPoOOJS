@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Inheritance</h1>
+<h2>Constructor Inheritance</h2>
+<p>This code sets the constructor's <i>prototype</i> property to an object that inherits from <i>Object.prototype</i>.</p>
+<p><i>YourConstructor</i> is a <i>subtype</i> of <i>Object</i>.</p>
+<p><i>Object</i> is a <i>supertype</i> of <i>YourConstructor</i>.</p>
+
+<script>
+
+  // you write this
+
+  function YourConstructor() {  // subtype of Object
+    //initialization
+  }
+
+
+  // JavaScript engine does this for you backstage
+
+  YourConstructor.prototype = Object.create(Object.prototype, {  // Object is a supertype of YourConstructor
+    constructor: {
+      configurable: true,
+      enumerable: true,
+      value: YourConstructor,
+      writable: true
+    }
+  });
+
+</script>
+
+</body>
+</html>
