@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Inheritance</h1>
+<h2>Constructor Stealing</h2>
+<p>Constructor stealing in a two-step process is useful when you need to accomplish inheritance between custom types.</p>
+<ul>
+  <li>Always need to modify the constructors prototype</li>
+  <li>May need to call the supertype constructor from the subtype constructor</li>
+  <li>Modify the prototype for method inheritance and use the constructor for stealing properties.</li>
+</ul>
+
+<h3><i>Pseudoclassical Inheritance</i></h3>
+
+<script>
+
+  function Rectangle(length, width) {
+    this.length = length;
+    this.width = width;
+  }
+
+  Rectangle.prototype.getArea = function() {
+    return this.length * this.width;
+  };
+
+  Rectangle.prototype.toString = function() {
+    return "[Rectangle " + this.length + "x" + this.width + "]";
+  };
+
+  // inherits from rectangle
+  function Square(size) {              // size argument being passed in creates length and width properties on the new Square object and makes them equal to size.
+    Rectangle.call(this, size, size);  // Square constructor calls Rectangle constructor
+    console.log(this);                 // logs Square {length: 6, width: 6}
+
+    // Optional: Add new properties to override existing properties here...
+  }
+
+  Square.prototype = Object.create(Rectangle.prototype, {  // Square.prototype is overwritten with a new object that inherits from Rectangle.prototype
+    constructor: {
+      configurable: true,
+      enumerable: true,
+      value: Square,
+      writable: true
+    }
+  });
+
+  Square.prototype.toString = function() {
+    return "[Square " + this.length + "x" + this.width + "]";
+  };
+
+  var square = new Square(6);
+
+  console.log(square.length);     // logs 6
+  console.log(square.width);      // logs 6
+  console.log(square.getArea());  // logs 36
+
+</script>
+
+</body>
+</html>
