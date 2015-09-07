@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Inheritance</h1>
+<h2>Accessing Supertype Methods</h2>
+<h3>Accessing a Supertype's Method using call() or apply() to execute the method on the subtype object</h3>
+<p>Supertype Method is <i>Rectangle.prototype.toString()</i>.</p>
+<p>Subtype Method is <i>Sqaure.prototype.toString()</i></p>
+
+
+<script>
+
+  function Rectangle(length, width) {
+    this.length = length;
+    this.width = width;
+  }
+
+  Rectangle.prototype.getArea = function() {
+    return this.length + this.width;
+  };
+
+  Rectangle.prototype.toString = function() {
+    return "[Rectangle " + this.length + "x" + this.height + "]";
+  };
+
+  // inherits from Rectangle
+  function Square(size) {
+    Rectangle.call(this, size, size);
+  }
+
+  Square.prototype = Object.create(Rectangle.prototype, {
+    constructor: {
+      configurable: true,
+      enumerable: true,
+      value: Square,
+      writable: true
+    }
+  });
+
+  // call the supertype method
+  Square.prototype.toString = function() {              // Square.prototype.toString calls Rectangle.prototype.toString by using call()
+    var text = Rectangle.prototype.toString.call(this);
+    return text.replace("Rectangle", "Square");         // Method replaces "Rectangle" with "Square" before returning the resulting text.
+  };
+
+
+</script>
+
+</body>
+</html>
