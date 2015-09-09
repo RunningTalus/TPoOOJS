@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Object Patters</h1>
+<h2>Private and Privileged Members</h2>
+<h3>The Module Pattern</h3>
+<h4>Closures</h4>
+<p>Closures - functions that access data outside their own scope.</p>
+
+<script>
+
+  var dog = (function(){
+
+    var age = 13;
+
+    return {
+      name: "Wilson",
+
+      getAge: function() {     // privileged method
+        return age;
+      },
+
+      growOlder: function() {  // privileged method
+        age++;
+      }
+
+    };
+
+  }());
+
+  console.log(dog.name);  // logs "Wilson"
+  console.log(dog.getAge()); // logs 13
+
+  dog.age = 91;
+  console.log(dog.getAge()); // logs 13
+
+  dog.growOlder();
+  console.log(dog.getAge()); // logs 14
+
+</script>
+
+</body>
+</html>
