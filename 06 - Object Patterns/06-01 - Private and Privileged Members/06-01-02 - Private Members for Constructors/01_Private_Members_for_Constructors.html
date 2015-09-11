@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Object Patterns</h1>
+<h2>Private and Privileged Members</h2>
+<h3>Private Members for Constructors</h3>
+<p>NOTE: Placing methods on an object instance is less efficient than placing methods on the prototype, BUT this is the only approach possible when you want private, instance-specific data.</p>
+
+<script>
+
+  function Whale(name) {
+    // define a variable only accessible inside of the Whale constructor
+    var age = 99;   // local variable age
+
+    this.name = name;
+
+    this.getAge = function() {
+      return age;
+    };
+
+    this.growOlder = function() {
+      age++;
+    };
+
+  }
+
+  var whale = new Whale("Moby Dick");  // instance of Whale receives its own age variable, getAge() method, and growOlder() method.
+  console.log(whale.name);             // logs "Moby Dick"
+  console.log(whale.getAge());         // logs 99
+
+  whale.age = 101;
+  console.log(whale.getAge());         // logs 99
+
+  whale.growOlder();
+  console.log(whale.getAge());         // logs 100
+
+
+</script>
+
+</body>
+</html>
