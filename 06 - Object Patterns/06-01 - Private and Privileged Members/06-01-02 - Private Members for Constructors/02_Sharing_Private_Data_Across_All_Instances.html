@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Object Patterns</h1>
+<h2>Private and Privileged Members</h2>
+<h3>Private Members for Constructors</h3>
+<h4>Using Constructors to Share Private data across all instances</h4>
+<p>NOTE: This is a hybrid approach that looks like the module pattern, but uses a constructor.</p>
+
+<script>
+
+  var Gorilla = (function(){
+    // everyone shares the same age
+    var age = 46;                    // defined outside the InnerGorilla constructor, but is used for two prototype methods: getAge() and growOlder();
+
+    function InnerGorilla(name) {  // InnerGorilla constructor is defined inside an IIFE
+      this.name = name;
+    }
+
+    InnerGorilla.prototype.getAge = function() {
+      return age;
+    };
+
+    InnerGorilla.prototype.growOlder = function (){
+      return age++;
+    };
+
+    return InnerGorilla;  // InnerGorilla constructor is returned and becomes the Gorilla constructor in the GLOBAL scope.
+
+
+  }());
+
+  var gorilla1 = new Gorilla("Digit");
+  var gorilla2 = new Gorilla("Amy");
+
+  console.log(gorilla1.name);     // logs "Digit"
+  console.log(gorilla1.getAge()); // logs 46
+
+  console.log(gorilla2.name);     // logs "Amy"
+  console.log(gorilla2.getAge()); // logs 46
+
+  gorilla1.growOlder();
+  console.log(gorilla1.getAge()); // logs 47
+  console.log(gorilla2.getAge()); // logs 47
+
+
+
+
+
+</script>
+
+</body>
+</html>
