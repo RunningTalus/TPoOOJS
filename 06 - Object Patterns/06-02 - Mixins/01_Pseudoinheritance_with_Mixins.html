@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Object Patterns</h1>
+<h2>Mixins</h2>
+<h3>Pseudoinheritance with Mixins</h3>
+<p>Mixins - occur when one object acquires properties of another WITHOUT modifying the prototype chain.</p>
+<p>The first object a <i>(receiver)</i> receives the properties of the second object the <i>(supplier)</i> by copying those properties directly.</p>
+<p>Mixins are shallow copies, so if a property contains an object, then both the supllier and the receiver will be pointing to the same object.</p>
+<p>This mixin pattern is used for adding new behaviors to JS objects that already exist on other objects.</p>
+
+<script>
+
+  function mixin(receiver, supplier) {
+    for (var property in supplier) {           // for-in loop iterates over the properties in supplier and then assigns the value of the property to a property of the same name on receiver.
+      if (supplier.hasOwnProperty(property)) {
+        receiver[property] = supplier[property]
+      }
+    }
+    return receiver;
+  }
+
+</script>
+
+</body>
+</html>
