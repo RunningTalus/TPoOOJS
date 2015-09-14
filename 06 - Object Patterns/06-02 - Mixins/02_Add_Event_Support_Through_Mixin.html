@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Object Patterns</h1>
+<h2>Mixins</h2>
+<h3>Pseudoinheritance with Mixins</h3>
+<h4>Adding event support to an object through Mixins.</h4>
+
+<script>
+
+  function EventTarget() {
+  }
+
+  EventTarget.prototype = {   // defined custom type for events
+
+    constructor: EventTarget,
+
+    addListener: function(type, listener) {
+
+      // create an array if doesn't exist
+
+      if (!this.hasOwnProperty("_listeners")) {
+        this._listeners = [];
+      }
+
+      if (typeof this._listeners[type] == "undefined") {
+        this._listeners[type] = [];
+      }
+
+      this._listeners[type].push(listener);
+
+    },
+
+    fire: function(event) {
+
+      if (!event.target) {
+        event.target = this;
+      }
+
+      if (!event.type) {
+        throw new Error("Event object missing 'type' property.");
+      }
+
+      if(this.listeners && this._listeners[event.type] instanceof Array) {
+        var listeners = this._listeners[event.type];
+        for (var i= 0, len=listeners.length; i < len; i++){
+          listeners[i].call(this, event);
+        }
+      }
+    },
+
+    removeListener: function(type, listener) {
+      if (this._listeners && this._listeners[type] instanceof Array) {
+        var listeners = this._listeners[type];
+        for (var i= 0, len=listeners.length; i < len; i++) {
+          if (listeners[i] === listener) {
+            listeners.splice(i,i);
+            break;
+          }
+        }
+      }
+    }
+  };
+
+</script>
+
+</body>
+</html>
