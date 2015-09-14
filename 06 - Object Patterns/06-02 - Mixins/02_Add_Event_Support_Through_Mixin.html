@@ -78,7 +78,16 @@
     data: "Hello World!"
   });
 
+  // Creating a new instance of EventTarget and then add on properties.
 
+  var person = new EventTarget();   // new variable person is created as an instance of EventTarget.
+  person.name = "Stanley";
+  person.sayName = function() {
+    console.log(this.name);
+    this.fire({
+      type: "namesaid", name: name
+    });
+  };
 
 </script>
 
