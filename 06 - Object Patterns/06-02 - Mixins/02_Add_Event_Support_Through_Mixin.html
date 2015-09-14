@@ -66,6 +66,20 @@
     }
   };
 
+  // Using instances of EventTarget
+
+  var target = new EventTarget();
+  target.addListener("message", function(event) {
+    console.log("Message is " + event.data);
+  })
+
+  target.fire({
+    type: "message",
+    data: "Hello World!"
+  });
+
+
+
 </script>
 
 </body>
