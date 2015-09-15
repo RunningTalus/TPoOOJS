@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Object Patterns</h1>
+<h2>Mixins</h2>
+<h3>Pseudoinheritance with Mixins</h3>
+<h4>Adding event support to an object through Mixins.</h4>
+
+<script>
+
+  function Person(name) {
+    this.name = name;
+  }
+
+  Person.prototype = Object.create(EventTarget.prototype);  // new Person type that inherits from EventTarget
+  Person.prototype.constructor = Person;
+
+  Person.prototype.sayName = function() {
+    console.log(this.name);
+    this.fire({
+      type: "namesaid", name: name
+    });
+  };
+
+  var person = new Person("Chris");
+
+  console.log(person instanceof Person);      // logs true
+  console.log(person instanceof EventTarget); // logs true
+
+</script>
+
+</body>
+</html>
