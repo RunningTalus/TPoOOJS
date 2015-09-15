@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Object Patterns</h1>
+<h2>Mixins</h2>
+<h3>Refining Pseudoinheritance with Mixins</h3>
+
+<!--<script>
+
+  function Person(name) {
+    this.name = name;
+  }
+
+  Person.prototype = Object.create(EventTarget.prototype);  // new Person type that inherits from EventTarget
+  Person.prototype.constructor = Person;
+
+  Person.prototype.sayName = function() {
+    console.log(this.name);
+    this.fire({
+      type: "namesaid", name: name
+    });
+  };
+
+  var person = new Person("Chris");
+
+  console.log(person instanceof Person);      // logs true
+  console.log(person instanceof EventTarget); // logs true
+
+</script>-->
+
+<script>
+
+  function Person(name) {
+    this.name = name;
+  }
+
+  mixin(Person.prototype, new EventTarget());  // Person.prototype is mixed in with a new instance of EventTarget to get the event behavior.
+
+  mixin(Person.prototype, {  // Person.prototype is mixed in with constructor and sayName()
+    constructor: Person,
+
+    sayName: function() {
+      console.log(this.name);
+      this.fire({
+        type: "namesaid", name: name
+      });
+    }
+  });
+
+  var person = new Person("David");
+
+  console.log(person instanceof Person);       // logs true
+  console.log(person instanceof EventTarget);  // logs false, instances of person are not instances of EventTarget.
+
+
+</script>
+
+</body>
+</html>
