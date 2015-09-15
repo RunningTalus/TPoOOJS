@@ -53,12 +53,12 @@
       }
     },
 
-    removeListener: function(type, listener) {
-      if (this._listeners && this._listeners[type] instanceof Array) {
+    removeListener: function(type, listener){
+      if (this._listeners && this._listeners[type] instanceof Array){
         var listeners = this._listeners[type];
-        for (var i= 0, len=listeners.length; i < len; i++) {
-          if (listeners[i] === listener) {
-            listeners.splice(i,i);
+        for (var i=0, len=listeners.length; i < len; i++){
+          if (listeners[i] === listener){
+            listeners.splice(i,1);
             break;
           }
         }
@@ -69,6 +69,7 @@
   // Using instances of EventTarget
 
   var target = new EventTarget();
+
   target.addListener("message", function(event) {
     console.log("Message is " + event.data);
   })

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Object Patterns</h1>
+<h2>Mixins</h2>
+<h3>Refining Pseudoinheritance with Mixins</h3>
+
+<script>
+
+  var person = mixin(new EventTarget(), {
+
+    name: "Jerry",
+
+    sayName: function() {
+      console.log(this.name);
+      this.fire({ type: "namesaid", name:name });
+    }
+  });
+
+</script>
+
+</body>
+</html>
