@@ -86,7 +86,7 @@
   person.sayName = function() {
     console.log(this.name);
     this.fire({
-      type: "namesaid", name: name
+      type: "namesaid", name: this.name
     });
   };
 

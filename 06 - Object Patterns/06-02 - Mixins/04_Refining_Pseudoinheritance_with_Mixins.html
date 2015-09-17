@@ -21,7 +21,7 @@
   Person.prototype.sayName = function() {
     console.log(this.name);
     this.fire({
-      type: "namesaid", name: name
+      type: "namesaid", name: this.name
     });
   };
 
@@ -38,7 +38,7 @@
     this.name = name;
   }
 
-  mixin(Person.prototype, new EventTarget());  // Person.prototype is mixed in with a new instance of EventTarget to get the event behavior.
+  mixin(Person.prototype, EventTarget.prototype);  // Person.prototype is mixed in with a new instance of EventTarget.prototype to get the event behavior.
 
   mixin(Person.prototype, {  // Person.prototype is mixed in with constructor and sayName()
     constructor: Person,
@@ -46,7 +46,7 @@
     sayName: function() {
       console.log(this.name);
       this.fire({
-        type: "namesaid", name: name
+        type: "namesaid", name: this.name
       });
     }
   });

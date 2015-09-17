@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Object Patterns</h1>
+<h2>Mixins</h2>
+<h3>Preserving Accessor Properties with Mixins</h3>
+
+<script>
+
+  function mixin (receiver, supplier) {
+    Object.keys(supplier).forEach(function(property){                       // Object.keys() used to get an array of all enumerable own properties on supplier.
+                                                                            // forEach() method is used to iterate over those properties.
+                                                                            // The property descriptor for each property on supplier is retrieved and then added to receiver via Object.defineProperty()
+      var descriptor = Object.getOwnPropertyDescriptor(supplier, property); // All relevant property information is transferred to receiver, thsu the person object has an accessor property called name, so it cannot be overwritten.
+      Object.defineProperty(receiver, property, descriptor);
+    });
+
+    return receiver;
+  }
+
+  var person = mixin(new EventTarget(), {
+    get name() {
+      return "Raine"
+    },
+
+    sayName: function() {
+      console.log(this.name);
+      this.fire({ type: "namesaid", name: this.name });
+    }
+
+  });
+
+  console.log(person.name);  // logs "Raine"
+
+  person.name = "Chris"
+  console.log(person.name);  // logs "Raine"
+
+</script>
+
+</body>
+</html>
