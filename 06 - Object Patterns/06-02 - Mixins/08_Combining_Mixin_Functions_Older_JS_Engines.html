@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Object Patterns</h1>
+<h2>Mixins</h2>
+<h3>Combining Mixin Approaches for Older JS Engines</h3>
+<p>The previous example only works in ECMAScript 5 Engines, this example will work in ECMAScript 3 Engines.</p>
+<p>NOTE: Keep in mind that <i>Object.keys()</i> returns only enumerable properties. If you want to copy over nonenumerable properties, use <i>Object.getOwnPropertyNames()</i> instead.</p>
+
+<script>
+
+function mixin(receiver, supplier) {
+
+  if (object.getOwnPropertyDescriptor) { // mixin() checks whether Object.getOwnPropertyDescriptor() exists to determine whether the JS engine supports ECMAScript 5.
+
+    Object.keys(supplier).forEach(function(property) {
+      var descriptor = Object.getOwnPropertyDescriptor(supplier, property);
+      Object.defineProperty(receiver, property, descriptor);
+    });
+
+  } else {
+
+    for (var property in supplier) {
+      if (supplier.hasOwnProperty(property)) {
+        receiver[property] = supplier[property]
+      }
+    }
+  }
+
+  return receiver;
+
+}
+
+</script>
+
+</body>
+</html>
