@@ -7,7 +7,11 @@
 <body>
 <h1>Object Patterns</h1>
 <h2>Scope-Safe Constructors</h2>
-<h3>FAIL: Using constructors with the new keyword.</h3>
+<h3>FAIL: Using constructors without the 'new' keyword.</h3>
+<p>This code is running in Nonstrict mode, it would fail in strict mode.</p>
+<p>The built-in constructors for <i>Array</i> or <i>RegExp</i> will work without <i>new</i> because they are written to be <i>scope safe</i>.</p>
+<p>Use <i>instanceof</i> to determine whether <i>new</i> was used in the function call.</p>
+
 <script>
 
   function Person(name) {
@@ -23,6 +27,18 @@
   console.log(person1 instanceof Person);  // logs false
   console.log(typeof person1);             // logs "undefined"
   console.log(name);                       // logs "Rufio"
+
+  // pseudocode below
+
+  /*
+  function Person(name) {
+    if (this instanceof Person) {
+      // called iwth "new"
+    } else {
+      // called without "new"
+    }
+  }
+  */
 
 </script>
 
