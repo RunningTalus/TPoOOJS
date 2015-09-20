@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Object Patterns</h1>
+<h2>Scope-Safe Constructors</h2>
+<p>This is a scope-safe version of <i>Person</i>.</p>
+
+<script>
+
+
+  // pseudocode below
+
+  /*
+   function Person(name) {
+   if (this instanceof Person) {
+   // called iwth "new"
+   } else {
+   // called without "new"
+   }
+   }
+   */
+
+  function Person(name) {
+    if (this instanceof Person) {
+      this.name = name;
+      console.log(name);          // logs "Rufio"
+    } else {
+      return new Person(name);
+    }
+  }
+
+</script>
+
+</body>
+</html>

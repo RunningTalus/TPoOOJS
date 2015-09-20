@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes from: The Principles of Object-Oriented JavaScript</title>
+</head>
+<body>
+<h1>Object Patterns</h1>
+<h2>Scope-Safe Constructors</h2>
+<p>JavaScript Reference Types with scope-safe constructors: <i>Object, Array, RegExp,</i> and <i>Error</i>.</p>
+<p>Creating new objects without using the <i>new</i> operator is becoming more common as an effort to curb errors caused by omitting <i>new</i>.</p>
+
+
+<script>
+
+  var person1 = new Person("Pablo");
+  var person2 = Person("Pablo");
+
+  console.log(person1 instanceof Person); // logs true
+  console.log(person2 instanceof Person); // logs true
+
+</script>
+
+</body>
+</html>
