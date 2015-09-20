@@ -40,6 +40,15 @@
   }
   */
 
+  function Person(name) {
+    if (this instanceof Person) {
+      this.name = name;
+      console.log(name);          // logs "Rufio"
+    } else {
+      return new Person(name);
+    }
+  }
+
 </script>
 
 </body>
